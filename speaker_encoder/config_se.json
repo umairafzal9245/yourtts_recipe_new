@@ -1,0 +1,148 @@
+{
+    "output_path": "/home/saad/Desktop/computeemneddings/resnet_speaker_encoder_training_output/",
+    "logger_uri": null,
+    "run_name": "run",
+    "project_name": null,
+    "run_description": "\ud83d\udc38Coqui trainer run.",
+    "print_step": 20,
+    "plot_step": 100,
+    "model_param_stats": false,
+    "wandb_entity": null,
+    "dashboard_logger": "tensorboard",
+    "log_model_step": null,
+    "save_step": 2000,
+    "save_n_checkpoints": 5,
+    "save_checkpoints": true,
+    "save_all_best": false,
+    "save_best_after": 10000,
+    "target_loss": null,
+    "print_eval": false,
+    "test_delay_epochs": 0,
+    "run_eval": false,
+    "run_eval_steps": null,
+    "distributed_backend": "nccl",
+    "distributed_url": "tcp://localhost:54321",
+    "mixed_precision": false,
+    "epochs": 10000,
+    "batch_size": 8,
+    "eval_batch_size": 4,
+    "grad_clip": 3.0,
+    "scheduler_after_epoch": true,
+    "lr": 0.0001,
+    "optimizer": "radam",
+    "optimizer_params": {
+        "betas": [
+            0.9,
+            0.999
+        ],
+        "weight_decay": 0
+    },
+    "lr_scheduler": null,
+    "lr_scheduler_params": null,
+    "use_grad_scaler": false,
+    "cudnn_enable": true,
+    "cudnn_deterministic": false,
+    "cudnn_benchmark": false,
+    "training_seed": 54321,
+    "model": "speaker_encoder",
+    "num_loader_workers": 8,
+    "num_eval_loader_workers": 0,
+    "use_noise_augment": false,
+    "audio": {
+        "fft_size": 512,
+        "win_length": 400,
+        "hop_length": 160,
+        "frame_shift_ms": null,
+        "frame_length_ms": null,
+        "stft_pad_mode": "reflect",
+        "sample_rate": 16000,
+        "resample": false,
+        "preemphasis": 0.97,
+        "ref_level_db": 20,
+        "do_sound_norm": false,
+        "log_func": "np.log10",
+        "do_trim_silence": false,
+        "trim_db": 60,
+        "do_rms_norm": true,
+        "db_level": -27.0,
+        "power": 1.5,
+        "griffin_lim_iters": 60,
+        "num_mels": 64,
+        "mel_fmin": 0.0,
+        "mel_fmax": 8000.0,
+        "spec_gain": 20,
+        "do_amp_to_db_linear": true,
+        "do_amp_to_db_mel": true,
+        "pitch_fmax": 640.0,
+        "pitch_fmin": 1.0,
+        "signal_norm": false,
+        "min_level_db": -100,
+        "symmetric_norm": false,
+        "max_norm": 4.0,
+        "clip_norm": false,
+        "stats_path": null
+    },
+    "datasets": [
+        {
+            "formatter": "vctk_old",
+            "dataset_name": "",
+            "path": "./datasets/vctk",
+            "meta_file_train": "",
+            "ignored_speakers": null,
+            "language": "ur",
+            "meta_file_val": "",
+            "meta_file_attn_mask": ""
+        }
+    ],
+    "model_params": {
+        "model_name": "resnet",
+        "input_dim": 64,
+        "use_torch_spec": true,
+        "log_input": true,
+        "proj_dim": 512
+    },
+    "audio_augmentation": {
+        "p": 0,
+        "rir": {
+            "rir_path": "/raid/datasets/DA/RIRS_NOISES/simulated_rirs/",
+            "conv_mode": "full"
+        },
+        "additive": {
+            "sounds_path": "/raid/datasets/DA/musan/",
+            "speech": {
+                "min_snr_in_db": 13,
+                "max_snr_in_db": 20,
+                "min_num_noises": 1,
+                "max_num_noises": 1
+            },
+            "noise": {
+                "min_snr_in_db": 0,
+                "max_snr_in_db": 15,
+                "min_num_noises": 1,
+                "max_num_noises": 1
+            },
+            "music": {
+                "min_snr_in_db": 5,
+                "max_snr_in_db": 15,
+                "min_num_noises": 1,
+                "max_num_noises": 1
+            }
+        },
+        "gaussian": {
+            "p": 0.7,
+            "min_amplitude": 0.0,
+            "max_amplitude": 1e-05
+        }
+    },
+    "loss": "softmaxproto",
+    "lr_decay": false,
+    "warmup_steps": 4000,
+    "tb_model_param_stats": false,
+    "steps_plot_stats": 10,
+    "num_classes_in_batch": 50,
+    "num_utter_per_class": 2,
+    "eval_num_classes_in_batch": 50,
+    "eval_num_utter_per_class": 2,
+    "voice_len": 2.0,
+    "class_name_key": "speaker_name"
+}
